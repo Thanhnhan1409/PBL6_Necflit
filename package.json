@@ -9,11 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
     "@floating-ui/dom": "^1.6.5",
     "@google/generative-ai": "^0.10.0",
     "axios": "^1.7.7",
     "element-plus": "^2.8.8",
+    "video.js": "^8.19.1",
     "vue": "^3.4.19",
+    "vue-plyr": "^7.0.0",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {

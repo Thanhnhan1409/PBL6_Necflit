@@ -7,11 +7,17 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    CardItem: typeof import('./src/components/card/CardItem.vue')['default']
+    CardList: typeof import('./src/components/card/CardList.vue')['default']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElCarousel: typeof import('element-plus/es')['ElCarousel']
+    ElCarouselItem: typeof import('element-plus/es')['ElCarouselItem']
     ElForm: typeof import('element-plus/es')['ElForm']
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElInput: typeof import('element-plus/es')['ElInput']
+    ElPopover: typeof import('element-plus/es')['ElPopover']
+    ElTooltip: typeof import('element-plus/es')['ElTooltip']
     FooterAuth: typeof import('./src/components/Layout/FooterAuth.vue')['default']
     GuideItem: typeof import('./src/components/Guide/GuideItem.vue')['default']
     HeaderDefault: typeof import('./src/components/Layout/HeaderDefault.vue')['default']
@@ -22,5 +28,9 @@ declare module 'vue' {
     SidebarAuth: typeof import('./src/components/Layout/SidebarAuth.vue')['default']
     SidebarMenu: typeof import('./src/components/Layout/SidebarMenu.vue')['default']
     TabRight: typeof import('./src/components/Layout/TabRight.vue')['default']
+    VideoYoutube: typeof import('./src/components/video/VideoYoutube.vue')['default']
+  }
+  export interface ComponentCustomProperties {
+    vLoading: typeof import('element-plus/es')['ElLoadingDirective']
   }
 }

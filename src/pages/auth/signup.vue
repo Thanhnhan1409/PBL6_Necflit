@@ -8,27 +8,49 @@
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-import type { FormInstance } from 'element-plus'
+import { ElNotification, type FormInstance } from 'element-plus'
 import router from '@/router';
 import { ISignupData } from '@/types'
+import { registerApi } from '@/services/auth.service';
 
 const formRef = ref<FormInstance>()
 const dynamicValidateForm = reactive<ISignupData>({
   fullname: '',
   email: '',
-  password: ''
+  password: '',
+  user_id: 11
 })
 
 
 const submitForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return
-  formEl.validate((valid: any) => {
+  formEl.validate(async (valid: any) => {
     if (valid) {
-      console.log('submit!')
+      await signup(dynamicValidateForm);
     } else {
       console.log('error submit!')
     }
   })
+}
+
+const signup = async (data: ISignupData) => {
+  try {
+    const res = await registerApi(data);
+    localStorage.setItem('access_token', res.data.access_token);
+    ElNotification({
+      title: 'Success',
+      message: 'Sign up successfully!',
+      type: 'success',
+    })
+    router.push('login')
+  } catch (error) {
+    console.log(error);
+    ElNotification({
+      title: 'Failed',
+      message: (error as any)?.response?.data.detail.msg,
+      type: 'error',
+    })
+  }
 }
 
 const goToSignin = () : void => {
